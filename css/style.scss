@@ -1,0 +1,1086 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500&display=swap');
+
+* {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    text-decoration: none;
+    text-transform: capitalize;
+    transition: .2s linear;
+}
+
+$green: #219150;
+$black: #10221b;
+$white: #fff;
+$light-bg: #eee;
+$border: .2rem solid $black;
+$box-shadow: 0 .5rem 1rem rgba(0,0,0,.1);
+
+@mixin grid($val) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax($val, 1fr));
+    gap: 1.5rem;
+}
+
+html {
+    font-size: 62.5%;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5rem;
+
+    &::-webkit-scrollbar{
+        width: 1rem;
+    }
+
+    &::-webkit-scrollbar-track{
+        background: $white ;
+    }
+
+    &::-webkit-scrollbar-thumb{
+        background: $black ;
+    }
+}
+
+section{
+    padding: 5rem 9%;
+}
+
+#btn{
+    margin-top: 1rem;
+    display: inline-block;
+    border: $border;
+    color: $black;
+    cursor: pointer;
+    background: none;
+    font-size: 1.7rem;
+    padding: 1rem 3rem;
+
+    &:hover{
+        background: $black;
+        color: $white;
+    }
+}
+
+.heading{
+    text-align: center;
+    margin-bottom: 2.5rem;
+    font-size: 4rem;
+    color: $black;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 2rem 9%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+
+    &.active {
+        background: $white;
+        box-shadow: $box-shadow;
+    }
+    
+
+    .logo {
+        margin-right: auto;
+        font-size: 2.5rem;
+        color: $black;
+        font-weight: bolder;
+
+        img{
+            height: 10;
+            width: 10;
+        }
+
+    }
+
+
+    .navbar{
+        
+        a{
+            margin-left: 2rem;
+            font-size: 1.7rem;
+            color: $black;
+
+            &:hover{
+                color: $green;
+            }
+        }
+
+        #nav-close{
+            font-size: 5rem;
+            cursor: pointer;
+            color: $white;
+            display: none;
+        }
+    }
+
+    .icons div{
+        font-size: 2.5rem;
+        margin-left: 2rem;
+        cursor: pointer;
+        color: $black;
+
+        &:hover{
+            color: $green;
+        }
+    }
+
+    // menu visibility diff screens (add media query for screen size)
+    #menu-btn{
+        display: none;
+    }
+}
+
+.search-form{
+    position: fixed;
+    // top: 0;
+    // left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transform: translateY(-110%);
+
+    &.active{
+        transform: translateY(0%);
+    }
+
+    #close-search{
+        position: absolute;
+        top: 1.5rem;
+        right: 2.5rem;
+        cursor: pointer;
+        color: $white;
+        font-size: 6rem;
+
+        &:hover{
+            color: $green;
+        }
+    }
+
+    form{
+        width: 70rem;
+        margin: 0 2rem;
+        padding-bottom: 2rem;
+        border-bottom: .2rem solid $white;
+        display: flex;
+        align-items: center;
+
+
+        input{
+            width: 100%;
+            font-size: 2rem;
+            color: $white;
+            text-transform: none;
+            background: none;
+            padding-right: 2rem;
+
+            &::placeholder{
+                color: #aaa;
+            }
+        }
+
+        label{
+            font-size: 3rem;
+            cursor: pointer;
+            color: $white;
+
+            &:hover{
+                color: $green;
+            }
+        }
+    }
+}
+
+.home{
+    padding: 0;
+
+    .box{
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        background-size: cover !important;
+        background-position: center !important;
+        justify-content: flex-end;
+        padding: 2rem 9%;
+
+        &.second{
+            justify-content: flex-start;
+        }
+
+        .content{
+            width: 50rem;
+
+            span{
+                font-size: 4rem;
+                color: $black;
+            }
+
+            h3{
+                font-size: 6rem;
+                color: $green;
+                text-transform: uppercase;
+            }
+
+            p{
+                line-height: 2;
+                color: $black;
+                font-size: 2rem;
+                padding: 1rem 0;
+            }
+        }
+    }
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after{
+    font-size: 3rem;
+    color: $black;
+}
+
+.category{
+    background: $light-bg;
+    
+    .box-container{
+        @include grid(29rem);
+
+        .box{
+            text-align: center;
+            padding: 2rem;
+
+            img{
+                height: 20rem;
+                width: 20rem;
+                border-radius: 50%;
+                margin-bottom: 1rem;
+            }
+
+            h3{
+                font-size: 2rem;
+                color: $green;
+            }
+
+            p{
+                font-size: 1.6rem;
+                color: $black;
+                padding: 1rem 0;
+                line-height: 2;
+            }
+        }
+    }
+}
+
+.about{
+    background: $light-bg;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .image{
+        flex:1 1 42rem;
+        padding-right: 5rem;
+        padding-bottom: 5rem;
+
+        img{
+            width: 100%;
+            box-shadow: 4rem 4rem 0 rgba(0,0,0,.1) ;
+        }
+    }
+
+    .content{
+        flex: 1 1 42rem;
+
+        h3{
+            font-size: 3rem;
+            color: $green;
+        }
+
+        p{
+            font-size: 1.6rem;
+            color: $black;
+            padding: 1rem 0;
+            line-height: 2;
+        }
+    }
+}
+
+.packages{
+
+    .box-container{
+        @include grid(35rem);
+
+        .box{
+            text-align: center;
+            background: $white;
+            border: $border;
+            box-shadow: $box-shadow;
+            border-radius: .5rem;
+
+            &:hover{
+                background: $black;
+
+                .content > *{
+                    color: $white;
+                }
+
+                .image{
+                    img{
+                        transform: scale(1.05);
+                    }
+                }
+
+                #btn{
+                    border-color: $white;
+                    color: $white;
+
+                    &:hover{
+                        background: $white;
+                        color: $black;
+                    }
+                }
+            }
+
+            .image{
+                height: 25rem;
+                overflow: hidden;
+                padding: 2rem;
+                padding-bottom: 0;
+                border-radius: .5rem;
+
+                img{
+                    height: 100%;
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: .5rem;
+                }
+            }
+
+            .content{
+                padding: 2rem;
+
+                h3{
+                    font-size: 2rem;
+                    color: $black;
+                }
+
+                p{
+                    font-size: 1.5rem;
+                    color: $black;
+                    padding: 1rem 0;
+                    line-height: 2;
+                }
+
+                .price{
+                    font-size: 2rem;
+                    color: $green;
+                }
+            }
+        }
+    }
+}
+
+.destination{
+
+    .box-container{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.5rem;
+        padding-bottom: 2rem;
+
+        .swiper-wrapper .swiper-slide .box{
+            overflow: hidden;
+            box-shadow: 1rem 1rem 1rem rgba(0,0,0,.2);
+            border: 1rem solid $white;
+            border-radius: .5rem;
+            position: relative;
+
+            &:hover{
+                .content{
+                    top: 0%;
+                }
+
+                #btn{
+                    border-color: $green;
+                    color: $green;
+
+                    &:hover{
+                        background: $green;
+                        color: $black;
+                    }
+                }
+            }
+
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: .5rem;
+            }
+
+            .content{
+                position: absolute;
+                top: -100%;
+                left: 0%;
+                height: 100%;
+                width: 100%;
+                text-align: center;
+                background: rgba(0,0,0,.7);
+                padding: 2rem;
+                padding-top: 10rem;
+
+                h3{
+                    font-size: 2.5rem;
+                    color: $green;
+                }
+
+                p{
+                    font-size: 1.7rem;
+                    line-height: 2;
+                    color: $white;
+                }
+
+                #btn{
+                    margin-top: 2rem;
+                    
+                }
+
+            }
+        }
+    
+
+    }
+
+}
+
+.footer{
+    background: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("https://img.freepik.com/free-photo/abstract-luxury-gradient-blue-background-smooth-dark-blue-with-black-vignette-studio-banner_1258-117928.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+
+    .box-container{
+        @include grid(25rem);
+
+        .box{
+
+            h3{
+                font-size: 2rem;
+                padding: 1.5rem 0;
+                color: $white;
+            }
+
+            a{
+                display: block;
+                font-size: 1.4rem;
+                color: $white;
+                padding: 1rem 0;
+
+                i{
+                    color: $green;
+                    padding-right: .5rem;
+                }
+
+                &:hover{
+                    color: $green;
+
+                    i{
+                        padding-right: 2rem;
+                    }
+                }
+            }
+        }
+    }
+
+    .credits{
+        text-align: center;
+        margin-top: 2.5rem;
+        padding: 1rem;
+        padding-top: 2.5rem;
+        font-size: 2rem;
+        color: $white;
+
+        span{
+            color: $green;
+            text-transform: uppercase;
+        }
+    }
+}
+
+
+// contactpage
+
+.contact_page{
+    
+    .container .row{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        
+        .map{
+            width: 100%;
+            flex: 1 1 40rem;
+            padding: 2rem;
+            background-color: $light-bg;
+            border-radius: .5rem;
+            backdrop-filter: blur(.4rem);
+        }
+
+        form{
+            flex: 1 1 40rem;
+            padding: 2rem;
+            background-color: $light-bg;
+            border-radius: .5rem;
+            backdrop-filter: blur(.4rem);
+
+            h3{
+                text-align: center;
+                font-size: 2rem; 
+                color: $black;
+                padding-bottom: 1rem;
+            }
+
+            .box{
+                width: 100%;
+                margin: 1rem 0;
+                border-radius: .5rem;
+                background-color: transparentize($color: $black, $amount: 0.8);
+                padding: 1.4rem;
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    .container .grid{
+        margin-top: 3rem;
+        @include grid(30rem);
+        margin-bottom: 3rem;
+
+        .box{
+            padding: 2rem;
+            background-color: $light-bg;
+            border-radius: .5rem;
+            backdrop-filter: blur(.4rem);
+            text-align: center;
+
+            i{
+                height: 5rem;
+                width: 6rem;
+                line-height: 5rem;
+                font-size: 2.5rem;
+                background-color: transparentize($color: $black, $amount: 0.4);
+                color: $white;
+                margin-bottom: 1rem;
+            }
+
+            h3{
+                padding: 1rem 0;
+                font-size: 2rem;
+                color: $green;
+            }
+
+            a{
+                display: block;
+                padding-top: 1rem;
+                font-size: 1.6rem;
+                color: $black;
+                line-height: 1.5;
+
+                &:hover{
+                    color: $green;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+
+
+    .member_container{
+        @include grid(25rem);
+
+        .member{
+            text-align: center;
+
+            &:hover{
+                
+            .image{
+                margin: 0 .5rem;
+                border: $border;
+                img{
+                    background: $white;
+                }
+                .share{
+                    bottom: 0;
+            }
+            }
+            }
+            
+            .image{
+                position: relative;
+                overflow: hidden;
+
+                img{
+                    background: $light-bg;
+                    border-radius: .5rem;
+                    width: 100%;
+
+                }
+                .share{
+                    position: absolute;
+                    bottom: -10; left: 0; right: 0;
+                    background: rgba(0,0,0,.8);
+                    padding: 1.8rem;
+    
+                    a{
+                        font-size: 3rem;
+                        margin: 0 1rem;
+                        color: $white;
+    
+                        &:hover{
+                            color: $green;
+                        }
+                    }
+                }
+            }
+            
+            .content{
+                display: flex;
+                padding-top: 1rem;
+                align-items: center;
+                justify-content: space-between;
+                margin: 0 1rem;
+
+                h3{
+                    font-size: 1.8rem;
+                }
+
+                span{
+                    font-size: 1.5rem;
+                    color: $green;
+                }
+            }
+    
+        }
+    
+    }
+}
+
+// reviews page
+.reviews {
+
+    .row{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        
+        
+        .slider{
+            width: 50%;
+            flex: 1 1 40rem;
+            // padding: 1rem;
+            // background-color: transparentize($color: $black, $amount: 0.8);
+            border-radius: .5rem;
+            backdrop-filter: blur(.4rem);
+
+            img{
+                width: 100%;
+                // height: 90%;
+                border-radius: .5rem;
+                object-fit: cover;
+            }
+        }
+
+        .info{
+            flex: 1 1 40rem;
+            padding: 1rem;
+            // background-color: transparentize($color: $black, $amount: 0.6);
+            border-radius: .5rem;
+            backdrop-filter: blur(.4rem);
+            text-align: center;
+            
+            h2{
+                margin-bottom: 2rem;
+                font-size: 2.5rem;
+                font-weight: bold;
+                color: $green;
+            }
+
+            p{
+                font-size: 2rem;
+                color: $black;
+                margin-bottom: 1rem;
+
+                i{
+                    color: $green;
+                }
+            }
+
+            .button{
+                h3{
+                    font-size: 2rem;
+                    color: $green;
+                    font-weight: bold;
+                }
+
+                button{
+                    align-items: baseline;
+                    justify-content: space-between;
+                    margin-bottom: 2rem;
+                }
+
+
+            
+            }
+            
+
+        }
+    }
+
+    .slide{
+        text-align: center;
+
+        p{
+            font-size: 1.5rem;
+            position: relative;
+            background: $light-bg;
+            border: $border;
+            margin-bottom: 3rem;
+            padding: 2rem;
+
+            &::before{
+                content: '';
+                position: absolute;
+                bottom: -1.2rem; left: 50%;
+                transform: translateX(-50%) rotate(45deg);
+                background: $light-bg;
+                border-bottom: $border;
+                border-right: $border;
+                height: 2rem;
+                width: 2rem;
+            }
+        }
+
+        img{
+            height: 7rem;
+            width: 7rem;
+            border-radius: 50%;
+        }
+
+        h3{
+            font-size: 2rem;
+            padding: .5rem 0;
+        }
+
+        .stars{
+            font-size: 1.2rem;
+            color: $green;
+        }
+    }
+}
+
+
+// destination page
+
+.destination_page{
+    
+
+    .details{
+        background: url('https://media.gadventures.com/media-server/dynamic/blogs/posts/admin/2015/08/Tanzania_Kilimanjaro_Barranco_View_Point_Mt_Meru_-_0M4A9931_Lg_RGBfeature.png') no-repeat rgba(0,0,0,.8);
+        background-position: center;
+        background-attachment: fixed;
+        background-size: cover;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+        min-height: 30vh;
+        border-radius: .5rem;
+
+        .box{
+            width: 50rem;
+            background-color: transparentize($color: #fff, $amount: 0.8);
+            padding: 3rem 2rem;
+            text-align: center;
+            backdrop-filter: blur(.4rem);
+            border-radius: 1rem;
+
+            h3{
+                padding-bottom: .5rem;
+                font-size: 2.5rem;
+                color: $black;
+            }
+
+            p{
+                font-size: 1.6rem;
+                padding: 1rem 0;
+                color: $black;
+                line-height: 2;
+            }
+        }
+    }
+
+    .grid{
+        @include grid(35rem);
+        margin-top: 5rem;
+
+        .box{
+            position: relative;
+            height: 50rem;
+            overflow: hidden;
+            border-radius: .5rem;
+
+            img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+            }
+
+            h3{
+                position: absolute;
+                top: 0; left: 0;
+                height: 100%;
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-color: transparentize($color: $black, $amount: 0.6);
+                backdrop-filter: blur(.4rem);
+                transition: .2s linear;
+                opacity: 0;
+
+                &:hover{
+                    opacity: 1;
+                }
+
+                span{
+                    font-size: 2rem;
+                    color: $white;
+                }
+            }
+
+        }
+    }
+}
+
+
+
+
+// packages_page
+
+.packages_page{
+
+    .grid{
+        @include grid(35rem);
+
+        .box{
+            background-color: transparentize($color: $black, $amount: 0.7);
+            padding: 2rem;
+            text-align: center;
+            border-radius: .5rem;
+            position: relative;
+
+            &:hover{
+                background-color: $light-bg;
+            }
+
+            .price{
+                position: absolute;
+                top: 3rem; left: 3rem;
+                border-radius: .5rem;
+                background: transparentize($color: $green, $amount: 0.6);
+                font-size: 1.8rem;
+                padding: .5rem 1.5rem;
+
+                small{
+                    color: $white;
+                    margin-right: .5rem;
+                    font-size: 2rem;
+                }
+
+                span{
+                    color: $black;
+                }
+            }
+
+            .address{
+                font-size: 1.8rem;
+                font-weight: bold;
+                color: $black;
+                line-height: 1.5;
+            }
+
+            .image{
+                height: 30rem;
+                width: 100%;
+                object-fit: cover;
+                border-radius: .5rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .name{
+                font-size: 2rem;
+                color: $green;
+            }
+        }
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// media queries
+
+@media (max-width:1200px) {
+    .header{
+        padding: 2rem;
+    }
+}
+
+@media (max-width:920px) {
+    html{
+        font-size: 55%;
+        scroll-padding-top: 7rem;
+    }
+
+    .home .box{
+        padding: 2rem;
+        justify-content: center;
+        background-position: right !important;
+
+        &.second{
+            justify-content: center;
+            background-position: left !important;
+        }
+
+        .content{
+            text-align: center;
+
+            span{
+                font-size: 3rem;
+            }
+
+            h3{
+                font-size: 4rem;
+            }
+        }
+    }
+}
+
+@media (max-width:768px) {
+    .header{
+        #menu-btn{
+            display: inline-block;
+        }
+
+        .navbar{
+            position: fixed;
+            top: 0;
+            left: -110%;
+            background: rgba(0,0,0,.7);
+            z-index: 10000;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            justify-content: center;
+
+            &.active{
+                left: 0;
+                box-shadow: 0 0 0 100vw rgba(0,0,0,.8);
+            }
+
+            a{
+                margin: 1rem 0;
+                font-size: 3rem;
+                color: $white;
+
+                &:hover{
+                    color: $green;
+                }
+            }
+
+            #nav-close{
+                display: block;
+                position: absolute;
+                top: 1rem;
+                right: 5rem;
+
+                &:hover{
+                    color: $green;
+                }
+            }
+        }
+    }
+    
+    .swiper-button-next::after,
+    .swiper-button-prev::after{
+        display: none;
+    }
+
+}
+
+@media (max-width:450px) {
+    html{
+        font-size: 50%;
+    }
+}
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
